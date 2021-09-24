@@ -4,7 +4,7 @@
 #  Input file is tab delimited.
 
 
-require(stats); require(graphics)
+require(stats); require(graphics); require(ggplot2)
 OPIHData <- read.table("PUB2021.txt", header = TRUE, sep = "\t", strip.white = TRUE, comment.char = "#")
 
 nYears <- length(OPIHData[,1])
@@ -54,3 +54,14 @@ for(i in 2:(nYears-30)){  # Starts at row two because first year (1969) is empty
 } # for(i in 2:(nYears-30)){
 
 write.table(OPIHModel.MA.results, file = "OPIH_MA_Results.csv", sep = ", ", row.names=FALSE)
+
+#Model fit statistics plot (figure 5)
+coeff <- 1/300
+ggplot(data=OPIHModel.MA.results, aes(x=Subset.year, y=Fstat)) + 
+  xlab("Year") +
+  geom_line(color="black",size=1.5) + 
+  geom_point(color="black", size = 2) +
+  geom_line(aes(y=(Adj.R2/coeff)), col='orange', size=1.5) +
+  geom_point(aes(y=(Adj.R2/coeff)), col='orange', size = 2) +
+  scale_y_continuous(breaks=seq(0,300,50), sec.axis = sec_axis(~.*coeff , name = "Adj. R2")) +
+  theme_bw()
