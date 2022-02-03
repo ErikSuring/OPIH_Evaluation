@@ -3,7 +3,7 @@ Code and data to accompany the 2021 summary of the OPIH forecast method
 
 OPIH_forecast.R is the code used annually to create an OPIH forecast
 
-OPIH_evaluation.R is the used in the 2021 summary of the OPIH forecast method to evaluate fit over multiple time periods
+OPIH_evaluation.R is the code used in the 2021 summary of the OPIH forecast method to evaluate fit over multiple time periods
 
 PUB2021.txt - Public hatchery data used in the forecast model. These data are from Table C-2 in the PFMC Preseason Report I:
 
