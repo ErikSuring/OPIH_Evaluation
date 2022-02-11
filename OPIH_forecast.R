@@ -2,12 +2,8 @@
 #  Pete Lawson
 #  5 January 2012
 #  19 January 2012 
-#  This may not be the most elegant piece of R code, but it runs two models and outputs results.
-#  Input file is tab delimited.
-#  Bug to be fixed: output .csv table column headers are shifted one column left in spreadsheet. 2016 ES - Fixed by setting rownames=False in output function
-#  30 January 2013
-#  4 February 2014
-#  Minor tweaks.
+#  October 2021 - Erik Suring - Code cleaned, added output figures
+#  January 2022 - Erik Suring - Added prediction output tables
 
 
 
