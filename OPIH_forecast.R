@@ -39,6 +39,7 @@ write.table(OPIHData, file = "OPIHData.csv", sep = ", ", row.names=FALSE)
 adopted.OPIH <- lm(AdltAllno83 ~ lagJackOPI + lagSmAdj, data=OPIHData)
 pred <- round(predict.lm(adopted.OPIH, OPIHData, interval="prediction"), 1)
 output <- cbind(OPIHData$Year, OPIHData$lagJackOPI, OPIHData$lagSmAdj, OPIHData$AdltAll, pred)
+colnames(output) <- c("Year", "OPIH_Jacks", "Smolt_Adjustment", "Observed_Abundance", "Predicted_Abundance", "Lower_CI", "Upper_CI")
 
 #Prediction error graph
 prediction.error <- as.data.frame(output)
