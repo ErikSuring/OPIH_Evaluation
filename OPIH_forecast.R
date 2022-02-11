@@ -6,13 +6,12 @@
 #  January 2022 - Erik Suring - Added prediction output tables
 
 
-
 require(stats); require(graphics); require(ggplot2)
 TimeStamp <- format(Sys.time(), "%a %b %d %X %Y")
-results <- "OPIH_results_2021.txt"
+results <- "OPIH_results_2022.txt"
 if(exists(results)) file.remove(results)
 
-OPIHData <- read.table("PUB2021.txt", header = TRUE, sep = "\t", strip.white = TRUE, comment.char = "#")
+OPIHData <- read.table("PUB2022.txt", header = TRUE, sep = "\t", strip.white = TRUE, comment.char = "#")
 
 nYears <- length(OPIHData[,1])
 earliestYear <- OPIHData[1,1]
