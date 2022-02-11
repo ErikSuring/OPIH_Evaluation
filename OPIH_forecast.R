@@ -71,7 +71,7 @@ ggsave("error.png", scale = 1.5, width = 6, height = 3, units = "in")
   
 # Observed and predicted abundance graph  
 ggplot(data = prediction.error, aes(x=Year, y=Predicted_Abundance)) +  
-  geom_col(aes(y=V4), fill = "orange") +
+  geom_col(aes(y=Observed_Abundance), fill = "orange") +
   geom_line(color="grey", size=1.5) +
   geom_point(color="black", size=2) +
   ylab("Coho Salmon abundance (1000s of fish)") +
