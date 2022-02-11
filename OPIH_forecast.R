@@ -41,6 +41,14 @@ pred <- round(predict.lm(adopted.OPIH, OPIHData, interval="prediction"), 1)
 output <- cbind(OPIHData$Year, OPIHData$lagJackOPI, OPIHData$lagSmAdj, OPIHData$AdltAll, pred)
 colnames(output) <- c("Year", "OPIH_Jacks", "Smolt_Adjustment", "Observed_Abundance", "Predicted_Abundance", "Lower_CI", "Upper_CI")
 
+# Write text file with regression summary and predicted values
+sink(file = results, append = FALSE, type = ("output"), split = TRUE)
+cat("\n","Run date and time:", TimeStamp,"\n")
+print(summary(adopted.OPIH))
+print(output)
+sink()
+write.table(output, file = "OPIH_Forecast.csv", sep = ", ", row.names=FALSE)
+
 #Prediction error graph
 prediction.error <- as.data.frame(output)
 prediction.error <- subset(prediction.error, V1!=1983)
