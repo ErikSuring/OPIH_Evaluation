@@ -51,12 +51,12 @@ write.table(output, file = "OPIH_Forecast.csv", sep = ", ", row.names=FALSE)
 
 #Prediction error graph
 prediction.error <- as.data.frame(output)
-prediction.error <- subset(prediction.error, V1!=1983)
-prediction.error$pred.error <- prediction.error$V4-prediction.error$fit
-prediction.error$pred.proportion <- prediction.error$pred.error/prediction.error$V4*100
+prediction.error <- subset(prediction.error, Year!=1983)
+prediction.error$pred.error <- prediction.error$Observed_Abundance-prediction.error$Predicted_Abundance
+prediction.error$pred.proportion <- prediction.error$pred.error/prediction.error$Observed_Abundance*100
 
 coeff <- 0.5
-ggplot(data = prediction.error, aes(x=V1, y=pred.error)) +  
+ggplot(data = prediction.error, aes(x=Year, y=pred.error)) +  
   geom_col(aes(y=pred.proportion/coeff), fill = "orange") +
   geom_point(color="black", size=2) +
   ylab("Observed minus forecast (1000s adult abundance)") +
@@ -69,8 +69,8 @@ ggplot(data = prediction.error, aes(x=V1, y=pred.error)) +
 
 ggsave("error.png", scale = 1.5, width = 6, height = 3, units = "in")
   
-#Observed and predicted abundance graph  
-ggplot(data = prediction.error, aes(x=V1, y=fit)) +  
+# Observed and predicted abundance graph  
+ggplot(data = prediction.error, aes(x=Year, y=Predicted_Abundance)) +  
   geom_col(aes(y=V4), fill = "orange") +
   geom_line(color="grey", size=1.5) +
   geom_point(color="black", size=2) +
